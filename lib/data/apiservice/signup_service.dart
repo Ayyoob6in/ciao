@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 import 'package:socialmedia_app/core/api/constant_api.dart';
 import 'package:socialmedia_app/core/url/constant_url.dart';
-import 'package:socialmedia_app/data/model/register_model.dart';
+import 'package:socialmedia_app/data/model/register/register_model.dart';
 
 class RegisterApiService {
   static const String baseUrl = ConstantUrl.baseUrl;

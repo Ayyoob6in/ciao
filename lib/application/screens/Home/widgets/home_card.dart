@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:socialmedia_app/application/screens/Home/widgets/card_button.dart';
-import 'package:socialmedia_app/application/screens/Home/widgets/card_text.dart';
+import 'package:socialmedia_app/application/screens/home/widgets/card_button.dart';
+import 'package:socialmedia_app/application/screens/home/widgets/card_text.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
 
 class HomeCard extends StatelessWidget {
@@ -43,7 +43,7 @@ class HomeCard extends StatelessWidget {
         width: double.infinity,
         decoration: const BoxDecoration(
             borderRadius: BorderRadiusDirectional.all(Radius.circular(20)),
-            color: Color.fromARGB(234, 153, 61, 252)),
+            color: Colors.transparent),
         child: Column(
           children: [
             sHeight10,

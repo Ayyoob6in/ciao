@@ -19,7 +19,7 @@ class IconContiner extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(
-                color: Color.fromARGB(255, 222, 130, 238),
+                color: Color.fromARGB(196, 65, 65, 194),
                 blurRadius: 4,
                 spreadRadius: 1.5,
               )

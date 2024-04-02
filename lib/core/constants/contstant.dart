@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const sHeight5 = SizedBox(
+  height: 5,
+);
 const sHeight10 = SizedBox(
   height: 10,
 );
@@ -30,3 +33,4 @@ const sWidth40 = SizedBox(
 const sWidth50 = SizedBox(
   width: 50,
 );
+const saveKeyPrefs = "userLoggedIn";

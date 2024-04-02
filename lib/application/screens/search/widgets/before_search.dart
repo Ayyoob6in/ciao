@@ -14,7 +14,7 @@ class BeforeSearch extends StatelessWidget {
                 crossAxisSpacing: 3,
                 mainAxisSpacing: 5,
                 crossAxisCount: 3),
-            itemCount: 40,
+            itemCount: 10,
             itemBuilder: (context, index) {
               return Container(
                 decoration:

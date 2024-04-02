@@ -24,7 +24,7 @@ class SearchIdle extends StatelessWidget {
                           BoxShadow(color: Colors.white, blurRadius: 0.3)
                         ],
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        color: Colors.deepPurple),
+                        color: Colors.blueAccent),
                     child: Row(
                       children: [
                         Container(

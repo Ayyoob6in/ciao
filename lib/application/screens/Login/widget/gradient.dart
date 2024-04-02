@@ -13,15 +13,23 @@ class GradientBackGround extends StatelessWidget {
       decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
-            Colors.deepPurpleAccent,
-            Color.fromARGB(185, 228, 85, 250),
+            // Color.fromARGB(144, 58, 36, 226),
+            // Color.fromARGB(214, 82, 89, 205),
+            Colors.blueAccent,
+            Colors.white,
+            Colors.blueAccent,
             Colors.white
+
+            // Color.fromARGB(180, 53, 107, 253),
+            // Colors.white,
+            // Color.fromARGB(255, 248, 249, 251)
           ], // Your three colors
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           stops: [
-            0.2,
-            0.8,
+            0.1,
+            0.5,
+            0.9,
             1.0
           ], // Position where the colors should start and end
         ),

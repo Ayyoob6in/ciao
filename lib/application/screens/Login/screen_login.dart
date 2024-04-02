@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:socialmedia_app/application/screens/login/widget/gradient.dart';
 import 'package:socialmedia_app/application/screens/forgotpassword/forgot.dart';
 import 'package:socialmedia_app/application/screens/navbar/navbar.dart';
+import 'package:socialmedia_app/application/utils/email_validator.dart';
 import 'package:socialmedia_app/application/widgets/common_divider.dart';
 import 'package:socialmedia_app/application/widgets/common_submit_button.dart';
 import 'package:socialmedia_app/data/apiservice/login_service.dart';
-import 'package:socialmedia_app/data/model/login_model.dart';
+import 'package:socialmedia_app/data/model/login/login_model.dart';
 
 import '../../../core/constants/contstant.dart';
 import '../../widgets/common_title_text.dart';
@@ -45,16 +47,7 @@ class ScreenLogin extends StatelessWidget {
                     fieldIcon: Icons.person,
                     controller: emailcontroller,
                     validator: (value) {
-                      const pattern =
-                          r"(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'"
-                          r'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-'
-                          r'\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*'
-                          r'[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4]'
-                          r'[0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9]'
-                          r'[0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\'
-                          r'x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])';
-                      final regex = RegExp(pattern);
-
+                      final regex = RegExp(Validators.emailValidator);
                       return value!.isEmpty || !regex.hasMatch(value)
                           ? 'Enter a valid email address'
                           : null;
@@ -67,12 +60,10 @@ class ScreenLogin extends StatelessWidget {
                     fieldIcon: Icons.lock,
                     controller: passWordController,
                     validator: (value) {
-                      RegExp regex = RegExp(
-                          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
                       if (value!.isEmpty) {
                         return 'Please enter password';
                       } else {
-                        if (!regex.hasMatch(value)) {
+                        if (!Validators.passwordValidator.hasMatch(value)) {
                           return 'Enter valid password';
                         } else {
                           return null;
@@ -98,9 +89,12 @@ class ScreenLogin extends StatelessWidget {
                   ),
                   sHeight20,
                   SubmitButton(
-                      buttonName: "Login",
+                      buttonName: "LOGIN",
                       buttonPress: () {
                         if (formKey.currentState!.validate()) {
+                          const Center(
+                            child: CircularProgressIndicator(),
+                          );
                           verifyLogin(context);
                         }
                       }),
@@ -155,8 +149,9 @@ class ScreenLogin extends StatelessWidget {
       LoginResponse response = await LoginService.login(email, password);
 
       // Check if login was successful
-      if (response.statusCode == 200) {
-        // Navigate to the next screen
+      if (response.statusCode == 200 || response.statusCode == 202) {
+        final sharedPrefs = await SharedPreferences.getInstance();
+        await sharedPrefs.setBool(saveKeyPrefs, true);
         Navigator.pushReplacement(
           // ignore: use_build_context_synchronously
           context,

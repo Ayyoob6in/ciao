@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/login_screen_textfield.dart';
+import 'package:socialmedia_app/application/screens/search/widgets/search_idle.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
-
-import 'widgets/search_idle.dart';
 
 // ignore: must_be_immutable
 class ScreenSearch extends StatelessWidget {

@@ -18,9 +18,9 @@ class CardButton extends StatelessWidget {
           blendMode: BlendMode.srcATop,
           shaderCallback: (Rect bounds) {
             return const LinearGradient(
-              colors: [Colors.deepPurple, Colors.purple],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+              colors: [Color.fromARGB(175, 32, 76, 221), Colors.white],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomLeft,
             ).createShader(bounds);
           },
           child: Icon(

@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:socialmedia_app/core/api/constant_api.dart'; // Import the constant file with the API key
 import 'package:socialmedia_app/core/url/constant_url.dart';
-import '../model/login_model.dart'; // Import the model classes
+import '../model/login/login_model.dart'; // Import the model classes
 
 class LoginService {
   static const String baseUrl = ConstantUrl.baseUrl;
@@ -16,6 +16,16 @@ class LoginService {
     const storage = FlutterSecureStorage();
     await storage.write(key: 'access_token', value: accessToken);
     await storage.write(key: 'refresh_token', value: refreshToken);
+  }
+
+  static Future<String?> getAccessToken() async {
+    const storage = FlutterSecureStorage();
+    return await storage.read(key: 'access_token');
+  }
+
+  static Future<String?> getRefreshToken() async {
+    const storage = FlutterSecureStorage();
+    return await storage.read(key: 'refresh_token');
   }
 
   static Future<LoginResponse> login(String email, String password) async {

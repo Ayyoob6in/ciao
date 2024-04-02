@@ -22,7 +22,7 @@ class StoryPart1 extends StatelessWidget {
             width: 65.0,
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                border: Border.all(color: Colors.deepPurple, width: 2)),
+                border: Border.all(color: Colors.white, width: 0.7)),
             child: Padding(
               padding: const EdgeInsets.all(3.0),
               child: ClipRRect(

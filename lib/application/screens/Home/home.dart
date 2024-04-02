@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:socialmedia_app/application/screens/Home/widgets/home_card.dart';
-import 'package:socialmedia_app/application/screens/Home/widgets/story_part1.dart';
+import 'package:socialmedia_app/application/screens/chat/screen_chat.dart';
+import 'package:socialmedia_app/application/screens/home/widgets/home_card.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
-import 'package:socialmedia_app/core/constants/contstant.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({
@@ -25,42 +25,47 @@ class ScreenHome extends StatelessWidget {
                     "Ciao",
                     style: GoogleFonts.birthstone(
                       textStyle: const TextStyle(
-                        color: Colors.black,
+                        color: Colors.white,
                         fontSize: 40,
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.05,
-                    child: Image.asset(
-                      "assets/chatIcon.png",
-                      color: Colors.black38,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (ctx) => const ScreenChat()));
+                    },
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * 0.05,
+                      child: Image.asset(
+                        "assets/chatIcon.png",
+                        color: Color.fromARGB(255, 249, 249, 250),
+                      ),
                     ),
                   ),
                 ],
               ),
-              sHeight10,
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.08,
-                child: ListView.builder(
-                  itemCount: 15,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    final bool isFirstStory = index == 0;
-                    return Padding(
-                      padding: const EdgeInsets.only(
-                        left: 2,
-                        right: 2,
-                      ),
-                      child: StoryPart1(
-                        userProfile: "assets/ThirdBoard.jpg",
-                        ontap: () {},
-                        showIcon: isFirstStory,
-                      ),
-                    );
-                  },
-                ),
-              ),
+              // SizedBox(
+              //   height: MediaQuery.of(context).size.height * 0.08,
+              //   child: ListView.builder(
+              //     itemCount: 15,
+              //     scrollDirection: Axis.horizontal,
+              //     itemBuilder: (context, index) {
+              //       final bool isFirstStory = index == 0;
+              //       return Padding(
+              //         padding: const EdgeInsets.only(
+              //           left: 2,
+              //           right: 2,
+              //         ),
+              //         child: StoryPart1(
+              //           userProfile: "assets/ThirdBoard.jpg",
+              //           ontap: () {},
+              //           showIcon: isFirstStory,
+              //         ),
+              //       );
+              //     },
+              //   ),
+              // ),
               Expanded(
                   child: ListView.builder(
                       itemCount: 10,

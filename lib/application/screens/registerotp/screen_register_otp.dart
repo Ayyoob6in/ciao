@@ -10,7 +10,7 @@ import 'package:socialmedia_app/application/widgets/common_subtitle.dart';
 import 'package:socialmedia_app/application/widgets/common_title_text.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
 import 'package:socialmedia_app/data/apiservice/signup_otp_verify.dart';
-import 'package:socialmedia_app/data/model/signup_verify_model.dart';
+import 'package:socialmedia_app/data/model/profile/signup_verify_model.dart';
 
 // ignore: must_be_immutable
 class ScreenRegisterOtp extends StatelessWidget {

@@ -52,7 +52,7 @@ class CustomTextFielsWidget extends StatelessWidget {
               hintText: hint,
               hintStyle: const TextStyle(color: Colors.grey),
               border: InputBorder.none,
-              icon: Icon(fieldIcon, color: Colors.deepPurpleAccent[100]),
+              icon: Icon(fieldIcon, color: Colors.deepPurple[300]),
               suffixIcon: IconButton(
                   onPressed: pressed,
                   icon: Icon(

@@ -1,16 +1,17 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmedia_app/application/screens/navbar/widgets/navbar_icon.dart';
-import 'package:socialmedia_app/application/screens/Home/home.dart';
+import 'package:socialmedia_app/application/screens/home/home.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
+import 'package:socialmedia_app/application/screens/post/screen_post.dart';
 import 'package:socialmedia_app/application/screens/search/search.dart';
+import 'package:socialmedia_app/application/screens/userprofile/user_profile.dart';
 
 class ScreenNavigation extends StatelessWidget {
-  ScreenNavigation(
-      {super.key, required this.accesToken, required this.refreshToken});
+  ScreenNavigation({super.key, this.accesToken, this.refreshToken});
   final _pageController = PageController();
-  final String accesToken;
-  final String refreshToken;
+  final String? accesToken;
+  final String? refreshToken;
 
   @override
   Widget build(BuildContext context) {
@@ -21,16 +22,16 @@ class ScreenNavigation extends StatelessWidget {
             children: <Widget>[
               const ScreenHome(),
               ScreenSearch(),
+              ScreenPost(),
               const Icon(Icons.history, color: Colors.blue),
-              const Icon(Icons.history, color: Colors.blue),
-              const Icon(Icons.history, color: Colors.blue),
+              const UserProfileScreen()
             ],
           ),
         ),
         bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.white10,
-            buttonBackgroundColor: Colors.deepPurple,
-            color: const Color.fromARGB(249, 104, 58, 183),
+            buttonBackgroundColor: Colors.blueAccent,
+            color: Colors.blueAccent,
             animationCurve: Curves.ease,
             height: 75,
             items: const <Widget>[

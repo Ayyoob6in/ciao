@@ -5,7 +5,7 @@ import 'package:socialmedia_app/core/url/constant_url.dart';
 
 import 'dart:convert';
 
-import 'package:socialmedia_app/data/model/signup_verify_model.dart';
+import 'package:socialmedia_app/data/model/profile/signup_verify_model.dart';
 
 class SignUpOtpVerifyService {
   static const String baseUrl = ConstantUrl.baseUrl;
