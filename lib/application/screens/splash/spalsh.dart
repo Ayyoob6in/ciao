@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:socialmedia_app/application/screens/Login/screen_login.dart';
 import 'package:socialmedia_app/application/screens/navbar/navbar.dart';
 import 'package:socialmedia_app/application/screens/start/screen_start.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
@@ -53,7 +52,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (_userLoggedIn == false || _userLoggedIn == null) {
       // ignore: use_build_context_synchronously
       Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => ScreenLogin()));
+          .push(MaterialPageRoute(builder: (context) => const ScreenStart()));
     } else {
       // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(MaterialPageRoute(

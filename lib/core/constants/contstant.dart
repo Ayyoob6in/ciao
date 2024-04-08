@@ -18,6 +18,9 @@ const sHeight40 = SizedBox(
 const sHeight50 = SizedBox(
   height: 50,
 );
+const sWidth5 = SizedBox(
+  width: 5,
+);
 const sWidth10 = SizedBox(
   width: 10,
 );

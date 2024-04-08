@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:socialmedia_app/data/apiservice/fetch_post.dart';
+import 'package:socialmedia_app/data/apiservice/fetchpost/fetch_post.dart';
 
 part 'fetch_post_event.dart';
 part 'fetch_post_state.dart';

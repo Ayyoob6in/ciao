@@ -18,7 +18,6 @@ class HomeCard extends StatelessWidget {
     required this.cardlikes,
     required this.cardMorePressed,
   });
-
   final String cardPost;
   final String cardProfile;
   final String cardProfileName;
@@ -41,8 +40,10 @@ class HomeCard extends StatelessWidget {
       child: Container(
         height: 535,
         width: double.infinity,
-        decoration: const BoxDecoration(
-            borderRadius: BorderRadiusDirectional.all(Radius.circular(20)),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.white, width: 3),
+            borderRadius:
+                const BorderRadiusDirectional.all(Radius.circular(20)),
             color: Colors.transparent),
         child: Column(
           children: [
@@ -50,11 +51,12 @@ class HomeCard extends StatelessWidget {
             ListTile(
               leading: CircleAvatar(
                 radius: 30,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.white,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
                     cardProfile,
+                    height: 80,
                     fit: BoxFit.cover,
                   ),
                 ),

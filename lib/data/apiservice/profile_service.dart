@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:socialmedia_app/core/api/constant_api.dart';
@@ -11,9 +12,9 @@ class ProfileApiService {
   static const String apiKey = ConstantApi.apiKey;
 
   Future<UserData?> fetchUserProfile() async {
-    final storage = FlutterSecureStorage();
+    const storage = FlutterSecureStorage();
 
-    final String profileUrl = '$baseUrl$endPoint';
+    const String profileUrl = '$baseUrl$endPoint';
 
     try {
       final accessToken = await storage.read(key: 'access_token');
@@ -33,12 +34,11 @@ class ProfileApiService {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         return UserData.fromJson(jsonResponse);
       } else {
-        print(
-            'Failed to fetch user profile. Status code: ${response.statusCode}');
+        log('Failed to fetch user profile. Status code: ${response.statusCode}');
         return null;
       }
     } catch (e) {
-      print('Error fetching user profile: $e');
+      log('Error fetching user profile: $e');
       return null;
     }
   }

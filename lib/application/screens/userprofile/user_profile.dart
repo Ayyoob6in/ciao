@@ -2,8 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmedia_app/application/screens/userprofile/widgets/user_profile_section.dart';
 import 'package:socialmedia_app/application/screens/userprofile/widgets/userprofile_second.dart';
-import 'package:socialmedia_app/data/apiservice/delete_post_service.dart';
-import 'package:socialmedia_app/data/apiservice/fetch_post.dart';
+import 'package:socialmedia_app/data/apiservice/deletepost/delete_post_service.dart';
+import 'package:socialmedia_app/data/apiservice/fetchpost/fetch_post.dart';
 import 'package:socialmedia_app/data/apiservice/profile_service.dart';
 import 'package:socialmedia_app/data/model/fetch_post/fetch_post.dart';
 import 'package:socialmedia_app/data/model/profile/profile.dart'; // Import your Post model

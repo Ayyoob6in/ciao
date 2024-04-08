@@ -1,5 +1,6 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:socialmedia_app/application/screens/chat/screen_chat.dart';
 import 'package:socialmedia_app/application/screens/navbar/widgets/navbar_icon.dart';
 import 'package:socialmedia_app/application/screens/home/home.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
@@ -23,7 +24,7 @@ class ScreenNavigation extends StatelessWidget {
               const ScreenHome(),
               ScreenSearch(),
               ScreenPost(),
-              const Icon(Icons.history, color: Colors.blue),
+              ScreenChat(),
               const UserProfileScreen()
             ],
           ),
@@ -45,7 +46,7 @@ class ScreenNavigation extends StatelessWidget {
                 iconData: Icons.add,
               ),
               NavbarIcon(
-                iconData: Icons.notifications,
+                iconData: Icons.chat_outlined,
               ),
               NavbarIcon(
                 iconData: Icons.person,

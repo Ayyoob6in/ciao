@@ -11,10 +11,7 @@ class NavbarIcon extends StatelessWidget {
       size: 35,
       color: Colors.white,
       shadows: const [
-        Shadow(
-            color: Colors.deepPurpleAccent,
-            blurRadius: 20,
-            offset: Offset(2, 3.7))
+        Shadow(color: Colors.blueAccent, blurRadius: 20, offset: Offset(2, 3.7))
       ],
     );
   }

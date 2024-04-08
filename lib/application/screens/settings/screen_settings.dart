@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:socialmedia_app/application/screens/login/screen_login.dart';
 import 'package:socialmedia_app/application/screens/login/widget/gradient.dart';
+import 'package:socialmedia_app/application/screens/settings/widgets/showi_dilog.dart';
 
 class ScreenSettings extends StatelessWidget {
   const ScreenSettings({super.key});
@@ -12,7 +11,7 @@ class ScreenSettings extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Settings"),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(234, 106, 134, 242),
+        backgroundColor: Colors.blue[400],
       ),
       body: GradientBackGround(
         child: SizedBox(
@@ -22,7 +21,12 @@ class ScreenSettings extends StatelessWidget {
               child: Column(children: [
                 ListTile(
                   onTap: () {
-                    logout(context);
+                    // logout(context);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LogoutDialog();
+                        });
                   },
                   title: const Text(
                     "Logout",
@@ -41,14 +45,5 @@ class ScreenSettings extends StatelessWidget {
             )),
       ),
     );
-  }
-
-  logout(BuildContext context) async {
-    final sharedPrefs = await SharedPreferences.getInstance();
-    sharedPrefs.clear();
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).pushAndRemoveUntil(
-        MaterialPageRoute(builder: (context) => ScreenLogin()),
-        (route) => false);
   }
 }

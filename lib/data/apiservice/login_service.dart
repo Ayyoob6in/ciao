@@ -4,7 +4,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:socialmedia_app/core/api/constant_api.dart'; // Import the constant file with the API key
 import 'package:socialmedia_app/core/url/constant_url.dart';
-import '../model/login/login_model.dart'; // Import the model classes
+import 'package:socialmedia_app/data/model/login/login_model.dart';
 
 class LoginService {
   static const String baseUrl = ConstantUrl.baseUrl;

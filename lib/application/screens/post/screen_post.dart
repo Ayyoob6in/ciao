@@ -27,7 +27,7 @@ class ScreenPost extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.blueAccent,
+          backgroundColor: Colors.blue[400],
           title: Text(
             'CREATE POST',
             style: GoogleFonts.notoSansHebrew(
@@ -44,7 +44,7 @@ class ScreenPost extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
-                height: 510,
+                height: 810,
                 decoration: BoxDecoration(
                     color: Colors.white,
                     boxShadow: const [
@@ -68,9 +68,9 @@ class ScreenPost extends StatelessWidget {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                height: 250,
+                                height: 450,
                                 decoration: BoxDecoration(
-                                    color: Colors.blueAccent,
+                                    color: Colors.blue[400],
                                     border: Border.all(
                                         color: Colors.white, width: 1),
                                     boxShadow: const [

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:socialmedia_app/application/screens/chat/widgets/chat_widget.dart';
 import 'package:socialmedia_app/application/screens/chat/widgets/story_widget.dart';
@@ -37,15 +35,6 @@ class _ScreenChatState extends State<ScreenChat>
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back_ios_new_rounded,
-              size: 20,
-              color: kWhite,
-            )),
         title: const Text(
           "Chats",
           style: TextStyle(color: kWhite),
@@ -66,10 +55,8 @@ class _ScreenChatState extends State<ScreenChat>
               ))
         ],
       ),
-      body: Container(
-        child: const Column(
-          children: [StoryWidget(), ChatWidget()],
-        ),
+      body: const Column(
+        children: [StoryWidget(), ChatWidget()],
       ),
       floatingActionButton: ClipRRect(
         borderRadius: const BorderRadius.all(containerRadius),

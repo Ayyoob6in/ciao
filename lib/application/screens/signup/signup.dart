@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/icon_continer.dart';
@@ -133,11 +135,11 @@ class ScreenSignUp extends StatelessWidget {
                           Map<String, dynamic> response =
                               await RegisterApiService.registerUser(
                                   registerData);
-                          print("response$response");
+                          log("response$response");
 
                           // Access the token from the "after execution" field
                           String? token = response['after execution']['token'];
-                          print("this is token$token");
+                          log("this is token$token");
 
                           if (token != null) {
                             // ignore: avoid_print
@@ -145,6 +147,7 @@ class ScreenSignUp extends StatelessWidget {
                             // ignore: avoid_print
                             print("this is token$token");
 
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 backgroundColor: Colors.deepPurple,
@@ -155,7 +158,8 @@ class ScreenSignUp extends StatelessWidget {
                             navigateToRegisterOtpScreen(context, token);
                             // Call the navigation method
                           } else {
-                            print("Token not found in response");
+                            log("Token not found in response");
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 backgroundColor: Colors.red,
@@ -165,6 +169,7 @@ class ScreenSignUp extends StatelessWidget {
                           }
                         } catch (e) {
                           if (e is ApiException) {
+                            // ignore: use_build_context_synchronously
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
@@ -172,7 +177,7 @@ class ScreenSignUp extends StatelessWidget {
                               ),
                             );
                           }
-                          print("Error $e");
+                          log("Error ${e.toString()}");
                         }
                       }
                     },

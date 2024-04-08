@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:socialmedia_app/application/screens/conversation/screen_conversation.dart';
 import 'package:socialmedia_app/core/constants/constant_color.dart';
 import 'package:socialmedia_app/core/constants/constant_radius.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
@@ -17,13 +18,22 @@ class ChatWidget extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.only(topLeft: containerRadius)),
       child: Padding(
-        padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
+        padding: EdgeInsets.only(left: 8, right: 8, top: 10),
         child: ListView.builder(
             itemCount: dummyData.length,
             itemBuilder: (context, index) {
               return Column(
                 children: [
                   ListTile(
+                    onTap: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ScreenConversation(
+                                userName: dummyData[index].name,
+                                userProfile: dummyData[index].avtarUrl,
+                                online: dummyData[index].online,
+                                time: dummyData[index].time,
+                              )));
+                    },
                     leading: CircleAvatar(
                       backgroundImage: NetworkImage(dummyData[index].avtarUrl),
                       radius: 26,

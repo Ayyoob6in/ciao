@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:socialmedia_app/application/screens/chat/screen_chat.dart';
+import 'package:socialmedia_app/application/blocs/Like/like_bloc.dart';
+import 'package:socialmedia_app/application/blocs/homebloc/bloc/home_bloc.dart';
 import 'package:socialmedia_app/application/screens/home/widgets/home_card.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
+import 'package:socialmedia_app/data/apiservice/explore/explore_service.dart';
+import 'package:socialmedia_app/data/apiservice/like/like_service.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({
@@ -12,83 +15,88 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GradientBackGround(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Ciao",
-                    style: GoogleFonts.birthstone(
-                      textStyle: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              HomeBloc(UserExploreService())..add(FetchExplorePostEvent()),
+          child: Container(),
+        ),
+        BlocProvider(
+            create: ((context) =>
+                LikeBloc(userLikeService: UserLikeService())..userLikeService))
+      ],
+      child: Scaffold(
+        body: GradientBackGround(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50, left: 10, right: 10),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Ciao",
+                      style: GoogleFonts.abyssinicaSil(
+                        textStyle: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 50,
+                        ),
                       ),
                     ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (ctx) => const ScreenChat()));
-                    },
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.05,
-                      child: Image.asset(
-                        "assets/chatIcon.png",
-                        color: Color.fromARGB(255, 249, 249, 250),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              // SizedBox(
-              //   height: MediaQuery.of(context).size.height * 0.08,
-              //   child: ListView.builder(
-              //     itemCount: 15,
-              //     scrollDirection: Axis.horizontal,
-              //     itemBuilder: (context, index) {
-              //       final bool isFirstStory = index == 0;
-              //       return Padding(
-              //         padding: const EdgeInsets.only(
-              //           left: 2,
-              //           right: 2,
-              //         ),
-              //         child: StoryPart1(
-              //           userProfile: "assets/ThirdBoard.jpg",
-              //           ontap: () {},
-              //           showIcon: isFirstStory,
-              //         ),
-              //       );
-              //     },
-              //   ),
-              // ),
-              Expanded(
-                  child: ListView.builder(
-                      itemCount: 10,
-                      itemBuilder: ((context, index) {
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: 10),
-                          child: HomeCard(
-                              cardPost:
-                                  "https://images.pexels.com/photos/20339251/pexels-photo-20339251/free-photo-of-woman-wearing-dress-sitting-by-the-lake.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-                              cardProfile: "assets/facebook.png",
-                              cardLikePressed: () {},
-                              cardCommentPressed: () {},
-                              sharePressed: () {},
-                              cardProfileName: "Edein Vindain",
-                              cardDescription:
-                                  "In this hexadecimal representation ation, 0xFFFFC0CB represents the color with full , 0xFFFFC0CB represents the color with full opacity (FF) and the RGB values for the color",
-                              cardPostTime: "2.30",
-                              cardcomments: "10",
-                              cardlikes: "20",
-                              cardMorePressed: () {}),
-                        );
-                      })))
-            ],
+                  ],
+                ),
+                Expanded(child:
+                    BlocBuilder<HomeBloc, HomeState>(builder: (context, state) {
+                  if (state is HomeLoadingState) {
+                    return Container(
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(
+                            "assets/Animation - 1712558320897 (1).gif"),
+                      )),
+                    );
+                  } else if (state is HomeLoadedState) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: state.explorePost.afterExecution!.length,
+                        itemBuilder: ((context, index) {
+                          final posts =
+                              state.explorePost.afterExecution![index];
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: HomeCard(
+                                cardPost: posts.mediaUrls![0],
+                                cardProfile:
+                                    "assets/Animation - 1712480074591.gif",
+                                cardLikePressed: () {
+                                  BlocProvider.of<LikeBloc>(context).add(
+                                    LikePostEvent(
+                                        postId: posts.postid.toString()),
+                                  );
+                                },
+                                cardCommentPressed: () {},
+                                sharePressed: () {},
+                                cardProfileName: "${posts.username}",
+                                cardDescription: "${posts.caption}",
+                                cardPostTime: "${posts.postAge}",
+                                cardcomments: "${posts.commentsCount}",
+                                cardlikes: "${posts.likesCount}",
+                                cardMorePressed: () {}),
+                          );
+                        }));
+                  } else if (state is HomeErrorState) {
+                    return const Center(
+                      child: Text("No data Avilable"),
+                    );
+                  } else {
+                    return const Center(
+                      child: Text("Something Went Wrong"),
+                    );
+                  }
+                }))
+              ],
+            ),
           ),
         ),
       ),

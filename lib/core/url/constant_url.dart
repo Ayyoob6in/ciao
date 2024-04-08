@@ -7,4 +7,9 @@ class ConstantUrl {
   static const fetchPostUrl = "/post";
   static const deletePostUrl = "/post";
   static const profileUrl = "/profile";
+  static const searchUrl = "/explore/search/user/";
+  static const followUrl = "/relation/follow/";
+  static const unFollowUrl = "/relation/unfollow/";
+  static const likeUrl = "/post/like/";
+  static const exploreUrl = "/explore";
 }
