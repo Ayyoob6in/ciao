@@ -6,8 +6,8 @@ import 'package:socialmedia_app/application/blocs/fecthpostbloc/fetch_post_bloc.
 import 'package:socialmedia_app/application/blocs/homebloc/bloc/home_bloc.dart';
 import 'package:socialmedia_app/application/blocs/postbloc/post_bloc_bloc.dart';
 import 'package:socialmedia_app/application/screens/splash/spalsh.dart';
-import 'package:socialmedia_app/data/apiservice/explore/explore_service.dart';
 import 'package:socialmedia_app/data/apiservice/like/like_service.dart';
+import 'package:socialmedia_app/data/apiservice/profileexplore/profile_explore_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -5,17 +5,17 @@ import 'package:socialmedia_app/core/api/constant_api.dart';
 import 'package:socialmedia_app/core/url/constant_url.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
-import 'package:socialmedia_app/data/model/explore_profile/explore_profile.dart';
+import 'package:socialmedia_app/data/model/explorepost/explore_post/explore_post.dart';
 
-class UserExploreProfileService {
+class UserExploreService {
   static const String baseUrl = ConstantUrl.baseUrl;
-  static const String endPoint = ConstantUrl.exploreProfileUrl;
+  static const String endPoint = ConstantUrl.exploreUrl;
   static const String apiKey = ConstantApi.apiKey;
 
-  Future<ExploreProfile?> explorePosts(String id) async {
+  Future<ExplorePost?> explorePosts() async {
     const storage = FlutterSecureStorage();
 
-    String profileUrl = '$baseUrl$endPoint$id';
+    String profileUrl = '$baseUrl$endPoint';
 
     try {
       final accessToken = await storage.read(key: 'access_token');
@@ -34,7 +34,7 @@ class UserExploreProfileService {
       if (response.statusCode == 200) {
         final Map<String, dynamic> jsonResponse = json.decode(response.body);
         log(response.body);
-        return ExploreProfile.fromMap(jsonResponse);
+        return ExplorePost.fromMap(jsonResponse);
       } else {
         log('Failed to fetch user profile. Status code: ${response.statusCode}');
         log(response.body.toString());

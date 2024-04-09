@@ -6,11 +6,15 @@ import 'package:socialmedia_app/application/widgets/common_submit_button.dart';
 import 'package:socialmedia_app/application/widgets/common_subtitle.dart';
 import 'package:socialmedia_app/application/widgets/common_title_text.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
+import 'package:socialmedia_app/data/apiservice/resetpassword/resetpassword.dart';
 
 import '../../widgets/common_backbutton.dart';
 
 class ScreenNewPassword extends StatelessWidget {
-  ScreenNewPassword({super.key});
+  final String otp;
+  final String token;
+
+  ScreenNewPassword({super.key, required this.otp, required this.token});
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -56,6 +60,11 @@ class ScreenNewPassword extends StatelessWidget {
                     SubmitButton(
                       buttonName: "Reset Password",
                       buttonPress: () {
+                        ResetPassword.resetPassword(
+                            otp,
+                            _passwordController.text,
+                            _confirmPasswordController.text,
+                            token);
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (ctx) => const ScreenResetSuccess()));
                       },

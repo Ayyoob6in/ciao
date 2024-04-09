@@ -5,8 +5,8 @@ import 'package:socialmedia_app/application/blocs/Like/like_bloc.dart';
 import 'package:socialmedia_app/application/blocs/homebloc/bloc/home_bloc.dart';
 import 'package:socialmedia_app/application/screens/home/widgets/home_card.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
-import 'package:socialmedia_app/data/apiservice/explore/explore_service.dart';
 import 'package:socialmedia_app/data/apiservice/like/like_service.dart';
+import 'package:socialmedia_app/data/apiservice/profileexplore/profile_explore_service.dart';
 
 class ScreenHome extends StatelessWidget {
   const ScreenHome({
@@ -66,6 +66,7 @@ class ScreenHome extends StatelessWidget {
                           return Padding(
                             padding: const EdgeInsets.only(bottom: 10),
                             child: HomeCard(
+                                id: posts.userid.toString(),
                                 cardPost: posts.mediaUrls![0],
                                 cardProfile:
                                     "assets/Animation - 1712480074591.gif",

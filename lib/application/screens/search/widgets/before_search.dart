@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialmedia_app/application/blocs/homebloc/bloc/home_bloc.dart';
-import 'package:socialmedia_app/data/apiservice/explore/explore_service.dart';
+import 'package:socialmedia_app/data/apiservice/profileexplore/profile_explore_service.dart';
 
 class BeforeSearch extends StatelessWidget {
   const BeforeSearch({

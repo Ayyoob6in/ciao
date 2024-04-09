@@ -7,6 +7,7 @@ import 'package:socialmedia_app/application/widgets/common_submit_button.dart';
 import 'package:socialmedia_app/application/widgets/common_subtitle.dart';
 import 'package:socialmedia_app/application/widgets/common_title_text.dart';
 import 'package:socialmedia_app/core/constants/contstant.dart';
+import 'package:socialmedia_app/data/apiservice/forgotpassword/forgotpassword_service.dart';
 
 import '../../widgets/common_backbutton.dart';
 
@@ -48,9 +49,13 @@ class ScreenForgotPassword extends StatelessWidget {
                     sHeight20,
                     SubmitButton(
                       buttonName: "Send Code",
-                      buttonPress: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (ctx) => ScreenOtp()));
+                      buttonPress: () async {
+                        final token = await ForgotPasswordService()
+                            .forgotPassword(emailController.text);
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (ctx) => ScreenOtp(
+                                  token: token.toString(),
+                                )));
                       },
                     ),
                     sHeight50,

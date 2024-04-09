@@ -10,8 +10,8 @@ import 'package:socialmedia_app/core/constants/contstant.dart';
 
 // ignore: must_be_immutable
 class ScreenOtp extends StatelessWidget {
-  ScreenOtp({super.key});
-
+  ScreenOtp({super.key, required this.token});
+  final String token;
   TextEditingController otpController1 = TextEditingController();
   TextEditingController otpController2 = TextEditingController();
   TextEditingController otpController3 = TextEditingController();
@@ -56,8 +56,15 @@ class ScreenOtp extends StatelessWidget {
               SubmitButton(
                 buttonName: "Verify",
                 buttonPress: () {
+                  final otp = otpController1.text +
+                      otpController2.text +
+                      otpController3.text +
+                      otpController4.text;
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => ScreenNewPassword())));
+                      builder: ((context) => ScreenNewPassword(
+                            otp: otp,
+                            token: token,
+                          ))));
                 },
               ),
               sHeight50,

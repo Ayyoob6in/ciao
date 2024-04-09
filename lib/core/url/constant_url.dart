@@ -12,4 +12,7 @@ class ConstantUrl {
   static const unFollowUrl = "/relation/unfollow/";
   static const likeUrl = "/post/like/";
   static const exploreUrl = "/explore";
+  static const forgotpasswordUrl = "/forgotpassword";
+  static const reseypasswordUrl = "/resetpassword";
+  static const exploreProfileUrl = "/explore/profile/";
 }

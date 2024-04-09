@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:socialmedia_app/data/model/explore_profile/explore_profile.dart';
 
-class UserExploreProfileService {
+class RandomProfileService {
   static const String baseUrl = ConstantUrl.baseUrl;
   static const String endPoint = ConstantUrl.exploreProfileUrl;
   static const String apiKey = ConstantApi.apiKey;

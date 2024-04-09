@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import 'package:socialmedia_app/data/apiservice/explore/explore_service.dart';
+import 'package:socialmedia_app/data/apiservice/profileexplore/profile_explore_service.dart';
 import 'package:socialmedia_app/data/model/explorepost/explore_post/explore_post.dart';
 
 part 'home_event.dart';
