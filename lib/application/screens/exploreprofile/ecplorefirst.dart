@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:socialmedia_app/application/screens/settings/screen_settings.dart';
 
-class UserProfileFirstSection extends StatelessWidget {
-  const UserProfileFirstSection({
+class UserProfileFirstSectionA extends StatelessWidget {
+  const UserProfileFirstSectionA({
     super.key,
   });
 
@@ -29,18 +28,15 @@ class UserProfileFirstSection extends StatelessWidget {
           ),
         ),
         Positioned(
-            right: 25,
+            left: 25,
             top: 50,
             child: GestureDetector(
               onTap: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => ScreenSettings()));
+                Navigator.of(context).pop();
               },
-              child: Container(
-                child: Icon(
-                  Icons.menu,
-                  color: Colors.white,
-                ),
+              child: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
               ),
             )),
         Positioned(

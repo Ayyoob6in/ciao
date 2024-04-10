@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:socialmedia_app/application/screens/exploreprofile/explore_profile.dart';
 import 'package:socialmedia_app/core/constants/constant_color.dart';
 import 'package:socialmedia_app/data/apiservice/follow/follow_service.dart';
 import 'package:socialmedia_app/data/apiservice/unfollow/unfollow_service.dart';
 import 'package:socialmedia_app/data/model/search/search_model/search_model.dart';
 
 class SearchIdle extends StatefulWidget {
-  SearchIdle({
-    Key? key,
+  const SearchIdle({
+    super.key,
     required this.searchResults,
-  }) : super(key: key);
+  });
 
   final List<SearchModel>? searchResults;
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchIdleState createState() => _SearchIdleState();
 }
 
@@ -30,6 +32,7 @@ class _SearchIdleState extends State<SearchIdle> {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.builder(
+        padding: EdgeInsets.zero,
         itemCount: widget.searchResults!.length,
         itemBuilder: (context, index) {
           final searchModel = widget.searchResults![index];
@@ -59,11 +62,19 @@ class _SearchIdleState extends State<SearchIdle> {
                       border: Border.all(color: Colors.white),
                       shape: BoxShape.circle,
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.asset(
-                        "assets/Animation - 1712480074591.gif",
-                        fit: BoxFit.cover,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: ((context) => RandomProfile(
+                                id: searchModel.afterExecution![index].userid
+                                    .toString()))));
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.asset(
+                          "assets/Animation - 1712480074591.gif",
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   ),

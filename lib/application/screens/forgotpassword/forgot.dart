@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:socialmedia_app/application/screens/Login/screen_login.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
@@ -52,6 +54,7 @@ class ScreenForgotPassword extends StatelessWidget {
                       buttonPress: () async {
                         final token = await ForgotPasswordService()
                             .forgotPassword(emailController.text);
+                        log(token.toString());
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (ctx) => ScreenOtp(
                                   token: token.toString(),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:socialmedia_app/application/screens/exploreprofile/ecplorefirst.dart';
 import 'package:socialmedia_app/application/screens/exploreprofile/randomProfile_first.dart';
-import 'package:socialmedia_app/application/screens/userprofile/widgets/user_profile_section.dart';
 import 'package:socialmedia_app/data/apiservice/randomProfile/random_profile_service.dart';
 import 'package:socialmedia_app/data/model/explore_profile/explore_profile.dart';
 
@@ -29,7 +29,7 @@ class _RandomProfileState extends State<RandomProfile> {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const UserProfileFirstSection(),
+          const UserProfileFirstSectionA(),
           RandomProfilesecond(
             fetchUserProfileService: _fetchUserProfileService,
           ),

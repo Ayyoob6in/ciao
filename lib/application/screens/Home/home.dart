@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,6 +7,7 @@ import 'package:socialmedia_app/application/blocs/Like/like_bloc.dart';
 import 'package:socialmedia_app/application/blocs/homebloc/bloc/home_bloc.dart';
 import 'package:socialmedia_app/application/screens/home/widgets/home_card.dart';
 import 'package:socialmedia_app/application/screens/Login/widget/gradient.dart';
+import 'package:socialmedia_app/core/constants/constant_color.dart';
 import 'package:socialmedia_app/data/apiservice/like/like_service.dart';
 import 'package:socialmedia_app/data/apiservice/profileexplore/profile_explore_service.dart';
 
@@ -33,15 +36,26 @@ class ScreenHome extends StatelessWidget {
             child: Column(
               children: [
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Ciao",
+                      "C",
+                      style: GoogleFonts.roboto(
+                        textStyle: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 50,
+                            shadows: [BoxShadow(color: kBlack, blurRadius: 6)],
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Text(
+                      "iao",
                       style: GoogleFonts.abyssinicaSil(
                         textStyle: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 50,
-                        ),
+                            color: kBlack,
+                            fontSize: 50,
+                            shadows: [
+                              BoxShadow(color: Colors.white, blurRadius: 10)
+                            ]),
                       ),
                     ),
                   ],
